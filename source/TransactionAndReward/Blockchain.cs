@@ -10,6 +10,7 @@ namespace TransactionAndReward
     {
         public IList<Block> Chain { get; set; }
         public int Difficulty { set; get; } = 3;
+        public int Reward { get; set; } = 1;
         public IList<Transaction> PendingTransactions = new List<Transaction>();
 
         public Blockchain()
@@ -77,9 +78,55 @@ namespace TransactionAndReward
             return true;
         }
 
+        /// <summary>
+        /// Create transaction 
+        /// </summary>
+        /// <param name="transaction"></param>
         public void CreateTransaction(Transaction transaction)
         {
             PendingTransactions.Add(transaction);
+        }
+
+        public void ProcessPendingTransactions(string minerAddress)
+        {
+            Block block = new Block(DateTime.UtcNow, GetLatestBlock().Hash, PendingTransactions);
+
+            AddBlock(block);
+
+            PendingTransactions = new List<Transaction>();
+            CreateTransaction(new Transaction(null, minerAddress, Reward));
+        }
+
+        //TODO : Need to improve this method
+        /// <summary>
+        /// Get the balance by address
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public int GetBalance(string address)
+        {
+            int balance = 0;
+
+            for (int iterator = 0; iterator < Chain.Count; iterator++)
+            {
+                if (Chain[iterator].Transactions != null && Chain[iterator].Transactions.Count > 0)
+                    for (int innerIterator = 0; innerIterator < Chain[iterator].Transactions.Count; innerIterator++)
+                    {
+                        var transaction = Chain[iterator].Transactions[innerIterator];
+
+                        if (transaction.FromAddress == address)
+                        {
+                            balance -= transaction.Amount;
+                        }
+
+                        if (transaction.ToAddress == address)
+                        {
+                            balance += transaction.Amount;
+                        }
+                    }
+            }
+
+            return balance;
         }
     }
 }
