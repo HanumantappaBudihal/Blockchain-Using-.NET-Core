@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicChain", "BasicChain\Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfWork", "ProofOfWork\ProofOfWork.csproj", "{A6AD3E64-0931-4ACF-8785-C33DF15DB029}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionAndReward", "TransactionAndReward\TransactionAndReward.csproj", "{F8CEAB9F-83B3-493C-A179-86520E8D6944}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A6AD3E64-0931-4ACF-8785-C33DF15DB029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6AD3E64-0931-4ACF-8785-C33DF15DB029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6AD3E64-0931-4ACF-8785-C33DF15DB029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8CEAB9F-83B3-493C-A179-86520E8D6944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8CEAB9F-83B3-493C-A179-86520E8D6944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8CEAB9F-83B3-493C-A179-86520E8D6944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8CEAB9F-83B3-493C-A179-86520E8D6944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
