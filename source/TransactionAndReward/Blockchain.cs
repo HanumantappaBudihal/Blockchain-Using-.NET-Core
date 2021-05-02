@@ -10,6 +10,7 @@ namespace TransactionAndReward
     {
         public IList<Block> Chain { get; set; }
         public int Difficulty { set; get; } = 3;
+        public IList<Transaction> PendingTransactions = new List<Transaction>();
 
         public Blockchain()
         {
@@ -29,7 +30,7 @@ namespace TransactionAndReward
 
         private Block CreateGenesisBlock()
         {
-            return new Block(DateTime.UtcNow, null, "{This genesis block}");
+            return new Block(DateTime.UtcNow, null, null);
         }
 
         /// <summary>
@@ -74,6 +75,11 @@ namespace TransactionAndReward
             }
 
             return true;
+        }
+
+        public void CreateTransaction(Transaction transaction)
+        {
+            PendingTransactions.Add(transaction);
         }
     }
 }

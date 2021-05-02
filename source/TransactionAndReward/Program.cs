@@ -6,7 +6,8 @@ namespace TransactionAndReward
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Blockchain simpleCoin = new Blockchain();
+            simpleCoin.CreateTransaction(new Transaction("Henry", "MaHesh", 10));
         }
     }
 }
