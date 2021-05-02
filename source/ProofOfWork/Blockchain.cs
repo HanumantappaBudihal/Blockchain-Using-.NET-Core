@@ -9,6 +9,7 @@ namespace ProofOfWork
     public class Blockchain
     {
         public IList<Block> Chain { get; set; }
+        public int Difficulty { set; get; } = 3;
 
         public Blockchain()
         {
@@ -49,7 +50,7 @@ namespace ProofOfWork
             Block latestBlock = GetLatestBlock();
             block.Index = latestBlock.Index + 1;
             block.PreviousHash = latestBlock.Hash;
-            block.Hash = block.GenerateHash();
+            block.Mine(this.Difficulty); // Generate the hash (work of proof)
 
             Chain.Add(block);
         }

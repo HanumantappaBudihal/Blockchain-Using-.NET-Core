@@ -11,6 +11,7 @@ namespace ProofOfWork
         public string PreviousHash { get; set; }
         public string Hash { get; set; }
         public string Data { get; set; }
+        public int Nouce { get; set; }
 
         public Block(DateTime timeStamp, string previousHash, string data)
         {
@@ -24,10 +25,21 @@ namespace ProofOfWork
         {
             SHA256 sha256 = SHA256.Create();
 
-            byte[] inputBytes = Encoding.ASCII.GetBytes($"{TimeStamp}-{PreviousHash ?? ""}-{Data}");
+            byte[] inputBytes = Encoding.ASCII.GetBytes($"{TimeStamp}-{PreviousHash ?? ""}-{Data}-{Nouce}");
             byte[] outputBytes = sha256.ComputeHash(inputBytes);
 
             return Convert.ToBase64String(outputBytes);
+        }
+
+        public void Mine(int difficulty)
+        {
+            var leadingZero = new string('0', difficulty);
+
+            while(this.Hash==null || this.Hash.Substring(0,difficulty)!=leadingZero)
+            {
+                this.Nouce++;
+                this.Hash = this.GenerateHash();
+            }
         }
     }
 }
