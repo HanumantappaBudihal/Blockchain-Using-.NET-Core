@@ -20,6 +20,10 @@ namespace BasicChain
             Hash = GenerateHash();
         }
 
+        /// <summary>
+        /// Generate the hash for the given data including the timestamp value.
+        /// </summary>
+        /// <returns></returns>
         public string GenerateHash()
         {
             SHA256 sha256 = SHA256.Create();
