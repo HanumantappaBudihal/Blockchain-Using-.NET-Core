@@ -9,7 +9,7 @@ namespace ProofOfWork
     public class Blockchain
     {
         public IList<Block> Chain { get; set; }
-        public int Difficulty { set; get; } = 3;
+        public int Difficulty { set; get; } = 2;
 
         public Blockchain()
         {

@@ -9,27 +9,27 @@ namespace TransactionAndReward
         {
             var startTime = DateTime.Now;
 
-            Blockchain phillyCoin = new Blockchain();
-            phillyCoin.CreateTransaction(new Transaction("Henry", "MaHesh", 10));
-            phillyCoin.ProcessPendingTransactions("Bill");
-            Console.WriteLine(JsonConvert.SerializeObject(phillyCoin, Formatting.Indented));
+            Blockchain simpleCoin = new Blockchain();
+            simpleCoin.CreateTransaction(new Transaction("Henry", "MaHesh", 10));
+            simpleCoin.ProcessPendingTransactions("Bill");
+            Console.WriteLine(JsonConvert.SerializeObject(simpleCoin, Formatting.Indented));
 
-            phillyCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));
-            phillyCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));
-            phillyCoin.ProcessPendingTransactions("Bill");
+            simpleCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));
+            simpleCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));
+            simpleCoin.ProcessPendingTransactions("Bill");
 
             var endTime = DateTime.Now;
 
             Console.WriteLine($"Duration: {endTime - startTime}");
 
             Console.WriteLine("=========================");
-            Console.WriteLine($"Henry' balance: {phillyCoin.GetBalance("Henry")}");
-            Console.WriteLine($"MaHesh' balance: {phillyCoin.GetBalance("MaHesh")}");
-            Console.WriteLine($"Bill' balance: {phillyCoin.GetBalance("Bill")}");
+            Console.WriteLine($"Henry' balance: {simpleCoin.GetBalance("Henry")}");
+            Console.WriteLine($"MaHesh' balance: {simpleCoin.GetBalance("MaHesh")}");
+            Console.WriteLine($"Bill' balance: {simpleCoin.GetBalance("Bill")}");
 
             Console.WriteLine("=========================");
             Console.WriteLine($"phillyCoin");
-            Console.WriteLine(JsonConvert.SerializeObject(phillyCoin, Formatting.Indented));
+            Console.WriteLine(JsonConvert.SerializeObject(simpleCoin, Formatting.Indented));
 
             Console.ReadKey();
         }
